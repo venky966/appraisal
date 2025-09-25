@@ -10,6 +10,7 @@ import RequestLeave from './pages/RequestLeave';
 import TimeOff from './pages/TimeOff';
 import LeaveHistory from './pages/LeaveHistory';
 import AttendanceTracker from './pages/AttendanceTracker';
+import ProfilePage from './pages/ProfilePage';
 
 // add your feedback subpages
 import SendFeedback from './pages/SendFeedback';
@@ -22,6 +23,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Dashboard />}>
             <Route index element={<DashboardPage />} />
+            <Route path="dashboard" element={<DashboardPage />} />
             <Route path="insights" element={<Insights />} />
             
             {/* Feedback parent with nested routes */}
@@ -36,6 +38,7 @@ function App() {
             <Route path="time-off" element={<TimeOff />} />
             <Route path="leave-history" element={<LeaveHistory />} />
             <Route path="attendance-tracker" element={<AttendanceTracker />} />
+            <Route path="profile" element={<ProfilePage />} />
           </Route>
         </Routes>
       </Router>

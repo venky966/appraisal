@@ -1,5 +1,5 @@
 .page-container {
-  padding: 20px;
+  padding: 30px;
   background-color: #f5f5f5;
   min-height: 100vh;
 }
@@ -18,10 +18,11 @@
 .insights-page {
   background-color: #ffffff;
   min-height: 100vh;
-  padding: 32px;
+  padding: 3px 40px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   margin: 0;
   width: 100%;
+ 
 }
 
 /* Header */
@@ -285,6 +286,231 @@
 
 .review-card.active:hover {
   background: #fbbf24;
+}
+
+/* Month Details */
+.month-details {
+  margin-top: 20px;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.month-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.month-content {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.month-score {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.score-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #fbbf24, #4a90e2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.score-number {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.score-label {
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+.month-feedback,
+.month-goals,
+.month-achievements {
+  margin-bottom: 20px;
+}
+
+.month-feedback h5,
+.month-goals h5,
+.month-achievements h5 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 8px;
+}
+
+.month-feedback p {
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+.month-goals ul,
+.month-achievements ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.month-goals li,
+.month-achievements li {
+  padding: 8px 0;
+  border-bottom: 1px solid #f3f4f6;
+  color: #6b7280;
+  position: relative;
+  padding-left: 20px;
+}
+
+.month-goals li:before {
+  content: "🎯";
+  position: absolute;
+  left: 0;
+}
+
+.month-achievements li:before {
+  content: "🏆";
+  position: absolute;
+  left: 0;
+}
+
+.month-goals li:last-child,
+.month-achievements li:last-child {
+  border-bottom: none;
+}
+
+/* Month content display */
+.month-content-display {
+  margin: 20px 0;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+}
+
+.month-content-display h4 {
+  color: #1f2937;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.month-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.month-score-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.score-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #fbbf24, #4a90e2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.score-number {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.score-label {
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+.month-info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.feedback-section,
+.goals-section,
+.achievements-section {
+  background: #f9fafb;
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 3px solid #fbbf24;
+}
+
+.feedback-section h5,
+.goals-section h5,
+.achievements-section h5 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 8px;
+}
+
+.feedback-section p {
+  color: #6b7280;
+  line-height: 1.5;
+  margin: 0;
+  font-size: 14px;
+}
+
+.goals-section ul,
+.achievements-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.goals-section li,
+.achievements-section li {
+  padding: 4px 0;
+  color: #6b7280;
+  font-size: 14px;
+  position: relative;
+  padding-left: 16px;
+}
+
+.goals-section li:before {
+  content: "🎯";
+  position: absolute;
+  left: 0;
+  font-size: 12px;
+}
+
+.achievements-section li:before {
+  content: "🏆";
+  position: absolute;
+  left: 0;
+  font-size: 12px;
 }
 
 /* Bottom Row */

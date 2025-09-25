@@ -30,8 +30,7 @@ const Dashboard = () => {
         <nav className="navigation">
           {/* Dashboard */}
           <NavLink 
-            to="/" 
-            end
+            to="/dashboard" 
             className={({ isActive }) => isActive ? "nav-item active" : "nav-item"}
           >
             <div className="nav-icon">⊞</div>

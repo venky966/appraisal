@@ -1,7 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './PageStyles.css';
 
 const Insights = () => {
+  const [selectedMonth, setSelectedMonth] = useState('January');
+
+  const handleMonthClick = (month) => {
+    setSelectedMonth(month);
+  };
+
+  const getMonthData = (month) => {
+    const monthData = {
+      'January': {
+        title: 'January 2025 Appraisal Review',
+        score: 85,
+        feedback: 'Excellent performance this month. Strong leadership skills demonstrated.',
+        goals: ['Complete project deliverables', 'Improve team collaboration', 'Enhance technical skills'],
+        achievements: ['Led successful project completion', 'Mentored 2 junior developers', 'Achieved 95% client satisfaction']
+      },
+      'February': {
+        title: 'February 2025 Appraisal Review',
+        score: 78,
+        feedback: 'Good progress this month. Continue focusing on communication skills.',
+        goals: ['Improve presentation skills', 'Complete training modules', 'Increase productivity'],
+        achievements: ['Completed advanced training', 'Improved team communication', 'Delivered 3 successful presentations']
+      },
+      'March': {
+        title: 'March 2025 Appraisal Review',
+        score: 92,
+        feedback: 'Outstanding performance! Exceptional work on all fronts.',
+        goals: ['Maintain high performance', 'Take on more responsibilities', 'Mentor new team members'],
+        achievements: ['Exceeded all targets', 'Trained 3 new employees', 'Received client appreciation award']
+      }
+    };
+    return monthData[month] || monthData['January'];
+  };
+
+  const currentData = getMonthData(selectedMonth);
+
   return (
     <div className="insights-page">
       <div className="header">
@@ -210,13 +245,29 @@ const Insights = () => {
           <div className="review-navigation">
             <button className="nav-arrow">‹</button>
             <div className="review-cards">
-              <div className="review-card active">Appraisal Review January- 2025</div>
-              <div className="review-card">Appraisal Review February- 2025</div>
-              <div className="review-card">Appraisal Review March- 2025</div>
+              <div 
+                className={`review-card ${selectedMonth === 'January' ? 'active' : ''}`}
+                onClick={() => handleMonthClick('January')}
+              >
+                Appraisal Review January- 2025
+              </div>
+              <div 
+                className={`review-card ${selectedMonth === 'February' ? 'active' : ''}`}
+                onClick={() => handleMonthClick('February')}
+              >
+                Appraisal Review February- 2025
+              </div>
+              <div 
+                className={`review-card ${selectedMonth === 'March' ? 'active' : ''}`}
+                onClick={() => handleMonthClick('March')}
+              >
+                Appraisal Review March- 2025
+              </div>
             </div>
             <button className="nav-arrow">›</button>
           </div>
         </div>
+
 
         {/* Bottom Row */}
         <div className="bottom-row">
