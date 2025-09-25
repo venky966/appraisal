@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Tracker Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f3f4f6;
+            padding: 20px;
+        }
+
+        .demo-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .attendance-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 32px;
+            border-bottom: 1px solid #e5e7eb;
+            background: #f9fafb;
+        }
+
+        .attendance-header h2 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 700;
+            color: #111827;
+            letter-spacing: -0.025em;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #6b7280;
+            padding: 8px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            font-weight: 300;
+        }
+
+        .attendance-tabs {
+            display: flex;
+            border-bottom: 1px solid #e5e7eb;
+            background: #f9fafb;
+            padding: 0 32px;
+        }
+
+        .tab {
+            background: none;
+            border: none;
+            padding: 16px 24px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            color: #6b7280;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .tab.active {
+            color: #2563eb;
+            border-bottom-color: #2563eb;
+            background: white;
+            font-weight: 600;
+        }
+
+        .attendance-content {
+            display: flex;
+            min-height: 500px;
+        }
+
+        .daily-status-panel {
+            flex: 1;
+            padding: 32px;
+            border-right: 1px solid #e5e7eb;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #fafbfc;
+        }
+
+        .status-header h3 {
+            margin: 0 0 32px 0;
+            font-size: 20px;
+            font-weight: 600;
+            color: #111827;
+            text-align: center;
+        }
+
+        .clock-icon {
+            font-size: 64px;
+            margin-bottom: 32px;
+            display: block;
+            text-align: center;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        }
+
+        .check-times {
+            width: 100%;
+            margin-bottom: 32px;
+        }
+
+        .check-in-section, .check-out-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding: 16px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .check-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .status-dot.green {
+            background-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+        }
+
+        .status-dot.red {
+            background-color: #ef4444;
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+        }
+
+        .check-label {
+            font-weight: 600;
+            color: #374151;
+            font-size: 16px;
+        }
+
+        .time-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 4px;
+        }
+
+        .time-display {
+            font-size: 14px;
+            color: #6b7280;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+            font-weight: 500;
+            background: #f3f4f6;
+            padding: 4px 8px;
+            border-radius: 4px;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .check-in-btn, .check-out-btn {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            min-width: 120px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .check-in-btn {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+        }
+
+        .check-out-btn {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+            box-shadow: 0 4px 14px rgba(239, 68, 68, 0.3);
+        }
+
+        .correction-link {
+            margin-top: auto;
+        }
+
+        .correction-link a {
+            color: #2563eb;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .attendance-history-panel {
+            flex: 1;
+            padding: 32px;
+            background: white;
+        }
+
+        .history-header h3 {
+            margin: 0 0 24px 0;
+            font-size: 20px;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .history-table {
+            overflow-x: auto;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .history-table table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            background: white;
+        }
+
+        .history-table th {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 16px 12px;
+            text-align: left;
+            font-weight: 600;
+            color: #374151;
+            border-bottom: 2px solid #e5e7eb;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .history-table td {
+            padding: 16px 12px;
+            border-bottom: 1px solid #f3f4f6;
+            color: #6b7280;
+            font-weight: 500;
+        }
+
+        .history-table tr:hover {
+            background-color: #f8fafc;
+        }
+
+        .history-table tr:last-child {
+            background: #f0f9ff;
+            border-top: 2px solid #0ea5e9;
+        }
+
+        .history-table tr:last-child td {
+            color: #0c4a6e;
+            font-weight: 600;
+        }
+
+        .status-present {
+            color: #10b981;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .status-absent {
+            color: #ef4444;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        @media (max-width: 768px) {
+            .attendance-content {
+                flex-direction: column;
+            }
+            
+            .daily-status-panel {
+                border-right: none;
+                border-bottom: 1px solid #e5e7eb;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <div class="attendance-header">
+            <h2>Attendance Tracker</h2>
+            <button class="close-btn">×</button>
+        </div>
+        
+        <div class="attendance-tabs">
+            <button class="tab active">Today</button>
+            <button class="tab">Previous</button>
+        </div>
+
+        <div class="attendance-content">
+            <div class="daily-status-panel">
+                <div class="status-header">
+                    <h3>Your Daily Status</h3>
+                </div>
+                
+                <div class="clock-icon">🕐</div>
+                
+                <div class="check-times">
+                    <div class="check-in-section">
+                        <div class="check-item">
+                            <span class="status-dot green"></span>
+                            <span class="check-label">Check In</span>
+                        </div>
+                        <div class="time-group">
+                            <div class="time-display">09:00 AM</div>
+                            <div class="time-display">01:30 PM</div>
+                        </div>
+                    </div>
+                    
+                    <div class="check-out-section">
+                        <div class="check-item">
+                            <span class="status-dot red"></span>
+                            <span class="check-label">Check Out</span>
+                        </div>
+                        <div class="time-group">
+                            <div class="time-display">01:50 PM</div>
+                            <div class="time-display">08:00 PM</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="check-in-btn">Check In</button>
+                    <button class="check-out-btn">Check Out</button>
+                </div>
+                
+                <div class="correction-link">
+                    <a href="#request">Request Correction</a>
+                </div>
+            </div>
+
+            <div class="attendance-history-panel">
+                <div class="history-header">
+                    <h3>Attendance History</h3>
+                </div>
+                
+                <div class="history-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>In Time</th>
+                                <th>Out Time</th>
+                                <th>Duration</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>09:00 AM</td>
+                                <td>06:00 PM</td>
+                                <td>9hr</td>
+                                <td class="status-present">Present</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>09:35 AM</td>
+                                <td>05:30 PM</td>
+                                <td>8hr</td>
+                                <td class="status-present">Present</td>
+                            </tr>
+                            <tr>
+                                <td>12</td>
+                                <td>10:01 AM</td>
+                                <td>06:00 PM</td>
+                                <td>9hr</td>
+                                <td class="status-present">Present</td>
+                            </tr>
+                            <tr>
+                                <td>13</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>0hr</td>
+                                <td class="status-absent">Absent</td>
+                            </tr>
+                            <tr>
+                                <td>Today</td>
+                                <td>00:00 AM</td>
+                                <td>07:00 PM</td>
+                                <td>9hr</td>
+                                <td class="status-present">Present</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add some basic interactivity
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        document.querySelector('.check-in-btn').addEventListener('click', function() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-US', { 
+                hour: '2-digit', 
+                minute: '2-digit',
+                hour12: true 
+            });
+            alert(`Checked in at ${timeString}`);
+        });
+
+        document.querySelector('.check-out-btn').addEventListener('click', function() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-US', { 
+                hour: '2-digit', 
+                minute: '2-digit',
+                hour12: true 
+            });
+            alert(`Checked out at ${timeString}`);
+        });
+    </script>
+</body>
+</html>
