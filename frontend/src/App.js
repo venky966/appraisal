@@ -6,6 +6,8 @@ import DashboardPage from './pages/DashboardPage';
 import Insights from './pages/Insights';
 import Members from './pages/Members';
 import Appraisal from './pages/Appraisal';
+import AppraisalForm from './pages/AppraisalForm';
+import AppraisalView from './pages/AppraisalView';
 import RequestLeave from './pages/RequestLeave';
 import TimeOff from './pages/TimeOff';
 import LeaveHistory from './pages/LeaveHistory';
@@ -34,6 +36,8 @@ function App() {
             
             <Route path="members" element={<Members />} />
             <Route path="appraisal" element={<Appraisal />} />
+            <Route path="appraisal-form" element={<AppraisalForm />} />
+            <Route path="appraisal-view" element={<AppraisalView />} />
             <Route path="request-leave" element={<RequestLeave />} />
             <Route path="time-off" element={<TimeOff />} />
             <Route path="leave-history" element={<LeaveHistory />} />

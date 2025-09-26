@@ -1,8 +1,8 @@
 .feedback-card {
     background: white;
-    border-radius: 20px;
+    border-radius: 16px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    margin: 20px;
+    margin: 15px;
     overflow: hidden;
     border: 1px solid #ddd;
   }
@@ -12,8 +12,8 @@
     background-color: #f9f9f9;
     color: #1e3a8a;
     font-weight: bold;
-    font-size: 35px;
-    padding: 20px 26px;
+    font-size: 22px;
+    padding: 16px 20px;
     border-bottom: 1px solid #ddd;
     
     display: flex;
@@ -22,7 +22,7 @@
   }
   
   .feedback-title {
-    font-size: 35px;
+    font-size: 22px;
     font-weight: 500;
   }
   
@@ -34,14 +34,14 @@
   }
   
   .notification-icon {
-    font-size: 30px;
+    font-size: 20px;
     cursor: pointer;
     color: white;
   }
   
   .profile-placeholder {
-    width: 75px;
-    height: 75px;
+    width: 50px;
+    height: 50px;
     background-color: #f0f0f0;
     border-radius: 50%;
     border: 1px solid #ddd;
@@ -58,18 +58,18 @@
     background-color: #fbbf24; /* yellow header row */
     color: #1e3a8a;
     text-align: left;
-    padding: 20px;
+    padding: 12px;
     font-weight: 500;
-    border: 3px solid #ccc;
-    font-size: 30px;
+    border: 2px solid #ccc;
+    font-size: 18px;
   }
   
   .feedback-table td {
-    padding: 25px;
+    padding: 12px;
     border: 1px solid #ccc;
     color: #1e3a8a;
     background-color: #f9f9f9;
-    font-size: 30px;
+    font-size: 16px;
   }
   
   .feedback-table tr:nth-child(even) td {
@@ -90,7 +90,7 @@
 
   /* Filter Section */
   .filter-section {
-    padding: 20px 26px;
+    padding: 12px 20px;
     border-bottom: 1px solid #e5e7eb;
     background-color: #f9f9f9;
     display: flex;
@@ -105,11 +105,11 @@
   }
 
   .filter-label {
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 500;
     color: #1e3a8a;
     background: white;
-    padding: 8px 16px;
+    padding: 6px 12px;
     border-radius: 6px;
     border: 1px solid #e5e7eb;
   }
@@ -118,16 +118,16 @@
     background: white;
     border: 1px solid #e5e7eb;
     border-radius: 6px;
-    padding: 8px 12px;
-    font-size: 16px;
+    padding: 6px 10px;
+    font-size: 14px;
     color: #1e3a8a;
     cursor: pointer;
     transition: all 0.2s;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 40px;
-    height: 40px;
+    min-width: 32px;
+    height: 32px;
   }
 
   .filter-button:hover {
@@ -150,12 +150,12 @@
   }
 
   .filter-title {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 600;
     color: #1e3a8a;
-    padding: 8px 16px;
+    padding: 6px 12px;
     border-bottom: 1px solid #e5e7eb;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
 
   .filter-option {
@@ -163,9 +163,9 @@
     background: white;
     border: 2px solid #8b5cf6;
     border-radius: 6px;
-    padding: 12px 16px;
-    margin: 4px 8px;
-    font-size: 16px;
+    padding: 8px 12px;
+    margin: 3px 6px;
+    font-size: 14px;
     font-weight: 500;
     color: #1e3a8a;
     cursor: pointer;

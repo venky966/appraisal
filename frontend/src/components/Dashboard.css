@@ -7,7 +7,7 @@
 
 /* Sidebar */
 .sidebar {
-  width: 250px;
+  width: 200px !important;
   background-color: white;
   padding: 40px;
   box-shadow: 2px 0 5px rgba(0,0,0,0.1);
@@ -22,7 +22,7 @@
 }
 
 .logo-image {
-  height: 60px;
+  height: 50px;
   width: auto;
   filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
 }
@@ -48,7 +48,7 @@
   background-color: #f3f4f6;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
   font-weight: 500;
-  font-size: 25px !important; /* 🔧 CHANGE THIS: Normal nav font size */
+  font-size: 20px !important; /* 🔧 CHANGE THIS: Normal nav font size */
 }
 
 .dashboard .nav-item:hover {
@@ -88,12 +88,13 @@
 .submenu-item {
   padding: 10px 14px;
   border-radius: 6px;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 500;
   color: #1e3a8a;
   text-decoration: none;
   background-color: #f9fafb;
   transition: background 0.2s;
+width: 100%;
 }
 
 .submenu-item:hover {
@@ -105,7 +106,7 @@
   background-color: #fbbf24 !important;
   color: #1e3a8a !important;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 /* Main Content */

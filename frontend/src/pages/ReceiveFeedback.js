@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import FeedbackPopup from '../components/FeedbackPopup';
+import ProfileDropdown from '../components/ProfileDropdown';
 import "./FeedbackReceived.css";
 
 const FeedbackReceived = () => {
@@ -92,7 +93,7 @@ const FeedbackReceived = () => {
         <span className="feedback-title">Feedback Received</span>
         <div className="header-actions">
           <div className="notification-icon">🔔</div>
-          <div className="profile-placeholder"></div>
+          <ProfileDropdown />
         </div>
       </div>
 

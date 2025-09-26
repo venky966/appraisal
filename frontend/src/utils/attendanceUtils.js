@@ -132,7 +132,7 @@ export const getCurrentSessionStatus = () => {
   const activeSession = todayRecord.sessions.find(session => !session.checkOut);
   
   if (activeSession) {
-    return { status: 'checked-in', canCheckIn: true, canCheckOut: true };
+    return { status: 'checked-in', canCheckIn: false, canCheckOut: true };
   } else {
     return { status: 'ready', canCheckIn: true, canCheckOut: false };
   }

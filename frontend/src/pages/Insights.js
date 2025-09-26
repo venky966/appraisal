@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './PageStyles.css';
+import ProfileDropdown from '../components/ProfileDropdown';
 
 const Insights = () => {
   const [selectedMonth, setSelectedMonth] = useState('January');
@@ -43,8 +44,7 @@ const Insights = () => {
         <h1 className="title">Your Insights</h1>
         <div className="header-icons">
           <div className="icon bell">🔔</div>
-          <div className="icon"></div>
-        
+          <ProfileDropdown />
         </div>
       </div>
 
@@ -57,7 +57,7 @@ const Insights = () => {
               <h2 className="card-title">My Monthly Appraisal</h2>
               <div className="progress-container">
                 <div className="progress-ring large">
-                  <svg width="200" height="200" viewBox="0 0 140 140">
+                  <svg width="150" height="120" viewBox="0 0 140 140">
                     <circle
                       cx="70"
                       cy="70"
@@ -97,7 +97,7 @@ const Insights = () => {
               <h3 className="metric-title">Punctuality</h3>
               <p className="metric-description">Your punctuality is excellent! Thank you for being a reliable and valuable member of our team.</p>
               <div className="progress-ring small">
-                <svg width="110" height="110" viewBox="0 0 60 60">
+                <svg width="70" height="70" viewBox="0 0 60 60">
                   <circle
                     cx="30"
                     cy="30"
@@ -133,7 +133,7 @@ const Insights = () => {
               <h3 className="metric-title">Teamwork</h3>
               <p className="metric-description">Fantastic teamwork! Your collaborative spirit and positive attitude are a great asset to the team.</p>
               <div className="progress-ring small">
-                <svg width="110" height="110" viewBox="0 0 60 60">
+                <svg width="70" height="70" viewBox="0 0 60 60">
                   <circle
                     cx="30"
                     cy="30"
@@ -169,7 +169,7 @@ const Insights = () => {
               <h3 className="metric-title">Attendance</h3>
               <p className="metric-description">Excellent attendance! Your reliability is highly valued and helps the entire team stay on track.</p>
               <div className="progress-ring small">
-                <svg width="110" height="110" viewBox="0 0 60 60">
+                <svg width="70" height="70" viewBox="0 0 60 60">
                   <circle
                     cx="30"
                     cy="30"
@@ -205,7 +205,7 @@ const Insights = () => {
               <h3 className="metric-title">Task Completion</h3>
               <p className="metric-description">Outstanding work on task completion! Your ability to manage your workload and deliver on time is a great example for the team.</p>
               <div className="progress-ring small">
-                <svg width="110" height="110" viewBox="0 0 60 60">
+                <svg width="70" height="70" viewBox="0 0 60 60">
                   <circle
                     cx="30"
                     cy="30"
@@ -285,7 +285,7 @@ const Insights = () => {
                 <div className="engagement-subtitle">Happy Navarathri Guyz....</div>
                 <div className="engagement-date">12 Sep 2025</div>
               </div>
-             
+              
             </div>
           </div>
           
@@ -296,7 +296,7 @@ const Insights = () => {
             <div className="scores-grid">
               <div className="score-card">
                 <div className="score-ring">
-                  <svg width="100" height="100" viewBox="0 0 60 60">
+                  <svg width="70" height="70" viewBox="0 0 60 60">
                     <circle
                       cx="30"
                       cy="30"
@@ -331,7 +331,7 @@ const Insights = () => {
 
               <div className="score-card">
                 <div className="score-ring">
-                  <svg width="140" height="140" viewBox="0 0 60 60">
+                  <svg width="85" height="85" viewBox="0 0 60 60">
                     <circle
                       cx="30"
                       cy="30"
@@ -366,7 +366,7 @@ const Insights = () => {
 
               <div className="score-card">
                 <div className="score-ring">
-                  <svg width="90" height="90" viewBox="0 0 40 40">
+                  <svg width="70" height="70" viewBox="0 0 40 40">
                     <circle
                       cx="20"
                       cy="20"
@@ -399,7 +399,7 @@ const Insights = () => {
                 <div className="score-label">PM Review</div>
                 <div className="score-card">
                 <div className="score-ring">
-                  <svg width="90" height="90" viewBox="0 0 40 40">
+                  <svg width="70" height="70" viewBox="0 0 40 40">
                     <circle
                       cx="20"
                       cy="20"

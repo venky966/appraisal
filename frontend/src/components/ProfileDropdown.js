@@ -46,6 +46,11 @@ const ProfileDropdown = () => {
 
   const handleEditProfile = () => {
     setIsOpen(false);
+    // Check if we're currently on the appraisal page
+    const currentPath = window.location.pathname;
+    if (currentPath.includes('/appraisal')) {
+      localStorage.setItem('fromAppraisal', 'true');
+    }
     navigate('/profile');
   };
 

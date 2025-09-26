@@ -23,6 +23,9 @@ const AttendanceTracker = () => {
   const [totalHoursToday, setTotalHoursToday] = useState(0);
   const [yesterdayData, setYesterdayData] = useState(null);
   const [sessionStatus, setSessionStatus] = useState({ status: 'ready', canCheckIn: true, canCheckOut: false });
+  const [selectedMonth, setSelectedMonth] = useState('');
+  const [monthHistory, setMonthHistory] = useState([]);
+  const [availableMonths, setAvailableMonths] = useState([]);
 
   // Load attendance data on component mount
   useEffect(() => {
@@ -53,7 +56,10 @@ const AttendanceTracker = () => {
       setCheckOutTime(latestSession.checkOut || '');
     }
     
-    // Load historical data for Previous tab
+    // Load available months for history
+    loadAvailableMonths();
+    
+    // Load historical data for History tab
     const attendanceData = getAttendanceData();
     const formattedHistory = attendanceData.map(record => {
       const recordDate = new Date(record.date);
@@ -72,16 +78,35 @@ const AttendanceTracker = () => {
         });
       }
       
+      // Find the first check-in and last check-out for the day
+      let firstCheckIn = null;
+      let lastCheckOut = null;
+      
+      if (record.sessions && record.sessions.length > 0) {
+        // Get first check-in
+        const firstSession = record.sessions.find(session => session.checkIn);
+        if (firstSession) {
+          firstCheckIn = new Date(firstSession.checkIn);
+        }
+        
+        // Get last check-out (only if it exists)
+        const sessionsWithCheckOut = record.sessions.filter(session => session.checkOut);
+        if (sessionsWithCheckOut.length > 0) {
+          const lastSession = sessionsWithCheckOut[sessionsWithCheckOut.length - 1];
+          lastCheckOut = new Date(lastSession.checkOut);
+        }
+      }
+      
       return {
         date: recordDate.getDate().toString(),
-        inTime: record.sessions && record.sessions.length > 0 ? 
-          new Date(record.sessions[0].checkIn).toLocaleTimeString('en-US', {
+        inTime: firstCheckIn ? 
+          firstCheckIn.toLocaleTimeString('en-US', {
             hour: '2-digit',
             minute: '2-digit',
             hour12: true
           }) : '-',
-        outTime: record.sessions && record.sessions.length > 0 ? 
-          new Date(record.sessions[record.sessions.length - 1].checkOut).toLocaleTimeString('en-US', {
+        outTime: lastCheckOut ? 
+          lastCheckOut.toLocaleTimeString('en-US', {
             hour: '2-digit',
             minute: '2-digit',
             hour12: true
@@ -94,6 +119,95 @@ const AttendanceTracker = () => {
     });
     
     setAttendanceHistory(formattedHistory);
+  };
+
+  const loadAvailableMonths = () => {
+    const attendanceData = getAttendanceData();
+    const months = new Set();
+    
+    attendanceData.forEach(record => {
+      const recordDate = new Date(record.date);
+      const monthKey = `${recordDate.getFullYear()}-${String(recordDate.getMonth() + 1).padStart(2, '0')}`;
+      const monthName = recordDate.toLocaleString('default', { month: 'long', year: 'numeric' });
+      months.add(JSON.stringify({ key: monthKey, name: monthName }));
+    });
+    
+    const monthsArray = Array.from(months).map(month => JSON.parse(month));
+    setAvailableMonths(monthsArray.sort((a, b) => b.key.localeCompare(a.key)));
+  };
+
+  const loadMonthHistory = (monthKey) => {
+    const attendanceData = getAttendanceData();
+    const [year, month] = monthKey.split('-');
+    
+    const monthData = attendanceData.filter(record => {
+      const recordDate = new Date(record.date);
+      return recordDate.getFullYear() == year && recordDate.getMonth() == (month - 1);
+    });
+    
+    const formattedMonthHistory = monthData.map(record => {
+      const recordDate = new Date(record.date);
+      
+      // Calculate total hours for the day
+      let totalDayHours = 0;
+      if (record.sessions) {
+        record.sessions.forEach(session => {
+          if (session.checkIn && session.checkOut) {
+            const checkIn = new Date(session.checkIn);
+            const checkOut = new Date(session.checkOut);
+            const diffMs = checkOut - checkIn;
+            const diffHours = diffMs / (1000 * 60 * 60);
+            totalDayHours += diffHours;
+          }
+        });
+      }
+      
+      // Find the first check-in and last check-out for the day
+      let firstCheckIn = null;
+      let lastCheckOut = null;
+      
+      if (record.sessions && record.sessions.length > 0) {
+        // Get first check-in
+        const firstSession = record.sessions.find(session => session.checkIn);
+        if (firstSession) {
+          firstCheckIn = new Date(firstSession.checkIn);
+        }
+        
+        // Get last check-out (only if it exists)
+        const sessionsWithCheckOut = record.sessions.filter(session => session.checkOut);
+        if (sessionsWithCheckOut.length > 0) {
+          const lastSession = sessionsWithCheckOut[sessionsWithCheckOut.length - 1];
+          lastCheckOut = new Date(lastSession.checkOut);
+        }
+      }
+      
+      return {
+        date: recordDate.getDate().toString(),
+        inTime: firstCheckIn ? 
+          firstCheckIn.toLocaleTimeString('en-US', {
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: true
+          }) : '-',
+        outTime: lastCheckOut ? 
+          lastCheckOut.toLocaleTimeString('en-US', {
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: true
+          }) : '-',
+        duration: `${Math.round(totalDayHours * 100) / 100}hr`,
+        status: record.status || 'Present',
+        fullDate: record.date,
+        sessions: record.sessions || []
+      };
+    });
+    
+    setMonthHistory(formattedMonthHistory);
+  };
+
+  const handleMonthSelect = (monthKey) => {
+    setSelectedMonth(monthKey);
+    loadMonthHistory(monthKey);
   };
 
   const handleCheckIn = () => {
@@ -110,7 +224,10 @@ const AttendanceTracker = () => {
       if (result.success) {
         setCheckInTime(timeString);
         setIsCheckedIn(true);
+        setIsCheckedOut(false);
         setCurrentStatus('checked-in');
+        // Update session status immediately
+        setSessionStatus({ status: 'checked-in', canCheckIn: false, canCheckOut: true });
         alert('Check-in recorded successfully!');
         // Reload attendance data to update the display
         loadAttendanceData();
@@ -134,7 +251,10 @@ const AttendanceTracker = () => {
       if (result.success) {
         setCheckOutTime(timeString);
         setIsCheckedOut(true);
+        setIsCheckedIn(false);
         setCurrentStatus('ready');
+        // Update session status immediately
+        setSessionStatus({ status: 'ready', canCheckIn: true, canCheckOut: false });
         alert('Check-out recorded successfully!');
         // Reload attendance data to update the display
         loadAttendanceData();
@@ -191,10 +311,10 @@ const AttendanceTracker = () => {
             Today
           </button>
           <button 
-            className={`tab ${activeTab === 'Previous' ? 'active' : ''}`}
-            onClick={() => setActiveTab('Previous')}
+            className={`tab ${activeTab === 'History' ? 'active' : ''}`}
+            onClick={() => setActiveTab('History')}
           >
-            Previous
+            History
           </button>
           
         </div>
@@ -250,7 +370,7 @@ const AttendanceTracker = () => {
 
           <div className="attendance-history-panel">
             <div className="history-header">
-              <h1>{activeTab === 'Today' ? 'Today\'s Sessions' : 'Yesterday\'s History'}</h1>
+              <h1>{activeTab === 'Today' ? 'Today\'s Sessions' : 'Attendance History'}</h1>
             </div>
             
             {activeTab === 'Today' ? (
@@ -260,6 +380,10 @@ const AttendanceTracker = () => {
                     {todaySessions.map((session, index) => (
                       <div key={session.sessionId} className="session-item">
                         <div className="session-number">Session {index + 1}</div>
+                        <div className="session-date">
+                          <span className="label">Date:</span>
+                          <span className="time">{new Date().toLocaleDateString('en-GB')}</span>
+                        </div>
                         <div className="session-times">
                           <div className="session-checkin">
                             <span className="label">Check In:</span>
@@ -286,56 +410,57 @@ const AttendanceTracker = () => {
                 )}
               </div>
             ) : (
-              <div className="yesterday-history">
-                {yesterdayData ? (
-                  <div className="yesterday-info">
-                    <div className="yesterday-summary">
-                      <h3>Yesterday's Summary</h3>
-                      <p><strong>Total Hours:</strong> {yesterdayData.totalHours}hr</p>
-                      <p><strong>Status:</strong> {yesterdayData.status}</p>
-                    </div>
-                    <div className="yesterday-sessions">
-                      <h4>Sessions:</h4>
-                      {yesterdayData.sessions.map((session, index) => (
-                        <div key={session.sessionId} className="session-item">
-                          <div className="session-number">Session {index + 1}</div>
-                          <div className="session-times">
-                            <div className="session-checkin">
-                              <span className="label">Check In:</span>
-                              <span className="time">
-                                {new Date(session.checkIn).toLocaleTimeString('en-US', {
-                                  hour: '2-digit',
-                                  minute: '2-digit',
-                                  hour12: true
-                                })}
-                              </span>
-                            </div>
-                            <div className="session-checkout">
-                              <span className="label">Check Out:</span>
-                              <span className="time">
-                                {session.checkOut ? new Date(session.checkOut).toLocaleTimeString('en-US', {
-                                  hour: '2-digit',
-                                  minute: '2-digit',
-                                  hour12: true
-                                }) : 'Not checked out'}
-                              </span>
-                            </div>
-                            {session.checkIn && session.checkOut && (
-                              <div className="session-duration">
-                                <span className="label">Duration:</span>
-                                <span className="time">
-                                  {Math.round(((new Date(session.checkOut) - new Date(session.checkIn)) / (1000 * 60 * 60)) * 100) / 100}hr
-                                </span>
-                              </div>
-                            )}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
+              <div className="history-content">
+                <div className="month-selector">
+                  <h3>Select Month:</h3>
+                  <div className="month-buttons">
+                    {availableMonths.map((month) => (
+                      <button
+                        key={month.key}
+                        className={`month-btn ${selectedMonth === month.key ? 'active' : ''}`}
+                        onClick={() => handleMonthSelect(month.key)}
+                      >
+                        {month.name}
+                      </button>
+                    ))}
                   </div>
-                ) : (
-                  <div className="no-yesterday-data">
-                    <p>No attendance data for yesterday</p>
+                </div>
+                
+                {selectedMonth && (
+                  <div className="month-history">
+                    <h3>Attendance for {availableMonths.find(m => m.key === selectedMonth)?.name}</h3>
+                    {monthHistory.length > 0 ? (
+                      <div className="history-table">
+                        <table>
+                          <thead>
+                            <tr>
+                              <th>Date</th>
+                              <th>Check In</th>
+                              <th>Check Out</th>
+                              <th>Duration</th>
+                              <th>Status</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {monthHistory.map((record, index) => (
+                              <tr key={index}>
+                                <td>{record.date}</td>
+                                <td>{record.inTime}</td>
+                                <td>{record.outTime}</td>
+                                <td>{record.duration}</td>
+                                <td style={{ color: record.status === 'Present' ? '#28a745' : '#dc3545' }}>
+                                  {record.status}
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    ) : (
+                      <div className="no-data">
+                        <p>No attendance data found for this month</p>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>

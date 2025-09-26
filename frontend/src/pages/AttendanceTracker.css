@@ -158,21 +158,20 @@
   }
   
   .attendance-header {
-    padding: 30px 40px 20px 40px;
+    padding: 20px 30px 15px 30px;
     border-bottom: 1px solid #e5e7eb;
   }
   
   .attendance-header h1 {
     margin: 0;
-    font-size: 32px;
+    font-size: 24px;
     font-weight: 600;
     color: #1e3a8a;
-    font-size: 40px;
   }
   
   .attendance-tabs {
     display: flex;
-    padding: 0 40px;
+    padding: 0 30px;
     border-bottom: 1px solid #e5e7eb;
     background: #f9fafb;
   }
@@ -180,9 +179,9 @@
   .tab {
     background: none;
     border: none;
-    padding: 26px 24px;
+    padding: 18px 20px;
     cursor: pointer;
-    font-size: 30px;
+    font-size: 18px;
     font-weight: 500;
     color: #1e3a8a;
     border-bottom: 3px solid transparent;
@@ -194,7 +193,7 @@
     border-bottom-color: #1e3a8a;
     background: white;
     font-weight: 500;
-    font-size: 35px;
+    font-size: 20px;
   }
   
   .tab:hover:not(.active) {
@@ -205,8 +204,8 @@
   .attendance-content {
     display: flex;
     flex: 1;
-    padding:40px;
-    gap: 40px;
+    padding: 25px;
+    gap: 25px;
   }
   
   /* Daily Status Panel */
@@ -222,17 +221,17 @@
   }
   
   .clock-section {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
   }
   .attendance-name{
-    font-size: 35px;
+    font-size: 24px;
     font-weight: 500;
     color: #1e3a8a;
    
   }
   
   .clock-icon {
-    font-size: 150px;
+    font-size: 100px;
     display: block;
     text-align: center;
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
@@ -240,8 +239,8 @@
   
   .check-status {
     display: flex;
-    gap: 160px;
-    margin-bottom: 40px;
+    gap: 100px;
+    margin-bottom: 25px;
   }
   
   .check-in-status, .check-out-status {
@@ -252,10 +251,10 @@
   }
   
   .status-dot {
-    width: 42px;
-    height: 42px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
   
   .status-dot.green {
@@ -271,38 +270,38 @@
   .status-text {
     font-weight: 500;
     color: #1e3a8a;
-    font-size: 30px;
+    font-size: 18px;
   }
   
   .status-time {
     font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
     font-weight: 500;
     color: #2563eb;
-    font-size: 25px;
+    font-size: 16px;
   }
   
   .status-date {
-    font-size: 20px;
+    font-size: 14px;
     color: #1e3a8a;
   }
   
   .action-buttons {
     display: flex;
-    gap: 130px;
-    margin-bottom: 30px;
+    gap: 80px;
+    margin-bottom: 20px;
   }
   
   .check-in-btn, .check-out-btn {
-    padding: 16px 32px;
+    padding: 12px 24px;
     border: none;
     border-radius: 8px;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s ease;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    min-width: 140px;
+    min-width: 110px;
   }
   
   .check-in-btn.active {
@@ -348,9 +347,9 @@
   .request-correction a {
     color: #1e3a8a;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 14px;
     font-weight: 500;
-    padding: 12px 140px;
+    padding: 10px 100px;
     border-radius: 6px;
     transition: all 0.2s ease;
     border: 1px solid #1e3a8a;
@@ -367,13 +366,13 @@
     flex: 1;
     background: white;
     border-radius: 12px;
-    padding: 40px;
+    padding: 25px;
     border: 1px solid #e5e7eb;
   }
   
   .history-header h1 {
-    margin: 0 0 30px 0;
-    font-size: 35px;
+    margin: 0 0 20px 0;
+    font-size: 22px;
     font-weight: 500;
     color: #1e3a8a;
   }
@@ -387,24 +386,24 @@
   .history-table table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 20px;
+    font-size: 14px;
     background: white;
   }
   
   .history-table th {
     background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-    padding: 25px 2px;
+    padding: 12px 8px;
     text-align: left;
     font-weight: 500;
     color: #1e3a8a;
     border-bottom: 2px solid #e5e7eb;
-    font-size: 22px;
+    font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
   }
   
   .history-table td {
-    padding: 28px 12px;
+    padding: 12px 8px;
     border-bottom: 1px solid #f3f4f6;
     color: #1e3a8a;
     font-weight: 500;
@@ -510,7 +509,7 @@
 .total-hours h4 {
   margin: 0;
   color: #1e3a8a;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 600;
 }
 
@@ -526,8 +525,8 @@
 .session-number {
   font-weight: 600;
   color: #1e3a8a;
-  margin-bottom: 10px;
-  font-size: 14px;
+  margin-bottom: 8px;
+  font-size: 12px;
 }
 
 .session-times {
@@ -546,18 +545,27 @@
 
 .session-checkin .label,
 .session-checkout .label,
-.session-duration .label {
+.session-duration .label,
+.session-date .label {
   font-weight: 500;
   color: #374151;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .session-checkin .time,
 .session-checkout .time,
-.session-duration .time {
+.session-duration .time,
+.session-date .time {
   color: #1e3a8a;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 12px;
+}
+
+.session-date {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
 }
 
 /* Yesterday's History */
@@ -570,15 +578,15 @@
 }
 
 .yesterday-summary h3 {
-  margin: 0 0 10px 0;
+  margin: 0 0 8px 0;
   color: #0c4a6e;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .yesterday-summary p {
-  margin: 5px 0;
+  margin: 4px 0;
   color: #0c4a6e;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .yesterday-sessions h4 {
@@ -593,4 +601,96 @@
   padding: 40px 20px;
   color: #6b7280;
   font-style: italic;
+}
+
+/* History Content */
+.history-content {
+  padding: 20px 0;
+}
+
+.month-selector {
+  margin-bottom: 20px;
+}
+
+.month-selector h3 {
+  color: #374151;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.month-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.month-btn {
+  background: #f3f4f6;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 14px;
+  color: #374151;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.month-btn:hover {
+  background: #e5e7eb;
+  border-color: #9ca3af;
+}
+
+.month-btn.active {
+  background: #3b82f6;
+  border-color: #3b82f6;
+  color: white;
+}
+
+.month-history h3 {
+  color: #374151;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.history-table {
+  overflow-x: auto;
+}
+
+.history-table table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.history-table th {
+  background: #f8fafc;
+  color: #374151;
+  font-weight: 600;
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 14px;
+}
+
+.history-table td {
+  padding: 12px;
+  border-bottom: 1px solid #f3f4f6;
+  font-size: 14px;
+  color: #374151;
+}
+
+.history-table tr:hover {
+  background: #f9fafb;
+}
+
+.no-data {
+  text-align: center;
+  color: #6b7280;
+  font-size: 14px;
+  padding: 40px 20px;
+  background: #f9fafb;
+  border-radius: 8px;
 }

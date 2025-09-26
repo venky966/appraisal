@@ -1,5 +1,6 @@
 import React from "react";
 import "./SendFeedback.css"; // import the CSS file
+import ProfileDropdown from '../components/ProfileDropdown';
 
 export default function SendFeedback() {
   return (
@@ -7,7 +8,10 @@ export default function SendFeedback() {
       {/* Header */}
       <div className="feedback-header">
         <h2 className="feedback-title">Send Anonymous Feedback</h2>
-        <div className="feedback-bell">🔔</div>
+        <div className="header-actions">
+          <div className="feedback-bell">🔔</div>
+          <ProfileDropdown />
+        </div>
       </div>
 
       <p className="feedback-subtitle">Share your anonymous feedback</p>

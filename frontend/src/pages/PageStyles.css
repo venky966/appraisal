@@ -18,10 +18,11 @@
 .insights-page {
   background-color: #ffffff;
   min-height: 100vh;
-  padding: 3px 40px;
+  padding: 3px 15px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   margin: 0;
   width: 100%;
+  overflow-x: hidden;
  
 }
 
@@ -30,11 +31,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 34px;
+  margin-bottom: 20px;
 }
 
 .title {
-  font-size: 28px;
+  font-size: 20px;
   font-weight: 800;
   color: #1f2937;
   margin: 0;
@@ -47,14 +48,14 @@
 }
 
 .icon {
-  width: 75px;
-  height: 75px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   background-color: #e5e7eb;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 30px;
+  font-size: 20px;
   cursor: pointer;
   transition: background-color 0.2s;
 }
@@ -82,8 +83,8 @@
 .content {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  gap: 16px;
-  max-width: 1400px;
+  gap: 10px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -95,14 +96,14 @@
 /* Left Column - My Monthly Appraisal */
 .left-column {
   background: white;
-  border-radius: 16px;
-  padding: 20px;
+  border-radius: 12px;
+  padding: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 400px;
+  max-width: 300px;
 }
 
 .appraisal-card {
@@ -110,10 +111,10 @@
 }
 
 .card-title {
-  font-size: 28px;
+  font-size: 18px;
   font-weight: 500;
   color: #1e40af;
-  margin: 0 0 40px 0;
+  margin: 0 0 20px 0;
 }
 
 .progress-container {
@@ -127,16 +128,16 @@
 }
 
 .progress-ring.large {
-  width: 250px;
-  height: 200px;
+  width: 150px;
+  height: 120px;
 }
 
 .progress-ring.small {
-  width: 90px;
-  height: 90px;
+  width: 70px;
+  height: 70px;
   position: absolute;
-  top: 30px;
-  right: 20px;
+  top: 20px;
+  right: 15px;
 }
 
 .progress-text {
@@ -144,7 +145,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 28px;
+  font-size: 16px;
   font-weight: 500;
   color: #1e40af;
   z-index: 1;
@@ -160,10 +161,10 @@
 }
 
 .progress-ring.small .progress-text {
-  font-size: 30px;
+  font-size: 12px;
   position: absolute;
-  top: 60%;
-  left: 70%;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
   margin: 0;
   padding: 0;
@@ -181,35 +182,36 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: 16px;
+  gap: 10px;
 }
 
 .metric-card {
   background: white;
-  border-radius: 16px;
-  padding: 24px;
+  border-radius: 12px;
+  padding: 12px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: left;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 6px;
   position: relative;
+  min-height: 120px;
 }
 
 .metric-title {
-  font-size: 28px;
+  font-size: 18px;
   font-weight: 500;
   color: #1e40af;
   margin: 0;
 }
 
 .metric-description {
-  font-size: 16px;
+  font-size: 11px;
   color: #6b7280;
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.2;
   flex: 1;
-  padding-right: 80px;
+  padding-right: 40px;
 }
 
 /* Appraisal Review Section */
@@ -223,10 +225,10 @@
 }
 
 .section-title {
-  font-size: 35px;
+  font-size: 22px;
   font-weight: 500;
   color: #1e40af;
-  margin: 0 0 20px 0;
+  margin: 0 0 12px 0;
 }
 
 .review-navigation {
@@ -236,12 +238,12 @@
 }
 
 .nav-arrow {
-  width: 36px;
-  height: 36px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   background-color: #e5e7eb;
   border: none;
-  font-size: 18px;
+  font-size: 14px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -264,12 +266,12 @@
 .review-card {
   background: #f3f4f6;
   border-radius: 6px;
-  padding: 20px 60px;
+  padding: 12px 30px;
   white-space: nowrap;
   cursor: pointer;
   transition: all 0.2s;
   border: 2px solid transparent;
-  font-size: 20px;
+  font-size: 14px;
   font-weight: 500;
   color: #374151;
 }
@@ -298,10 +300,10 @@
 }
 
 .month-title {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 600;
   color: #1f2937;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
   text-align: center;
 }
 
@@ -319,8 +321,8 @@
 }
 
 .score-circle {
-  width: 120px;
-  height: 120px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   background: linear-gradient(135deg, #fbbf24, #4a90e2);
   display: flex;
@@ -332,15 +334,15 @@
 }
 
 .score-number {
-  font-size: 32px;
+  font-size: 20px;
   font-weight: 700;
   line-height: 1;
 }
 
 .score-label {
-  font-size: 14px;
+  font-size: 10px;
   font-weight: 500;
-  margin-top: 4px;
+  margin-top: 2px;
 }
 
 .month-feedback,
@@ -352,10 +354,10 @@
 .month-feedback h5,
 .month-goals h5,
 .month-achievements h5 {
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 600;
   color: #1f2937;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 
 .month-feedback p {
@@ -408,9 +410,9 @@
 
 .month-content-display h4 {
   color: #1f2937;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
   text-align: center;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 600;
 }
 
@@ -470,17 +472,17 @@
 .feedback-section h5,
 .goals-section h5,
 .achievements-section h5 {
-  font-size: 14px;
+  font-size: 11px;
   font-weight: 600;
   color: #1f2937;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 
 .feedback-section p {
   color: #6b7280;
-  line-height: 1.5;
+  line-height: 1.3;
   margin: 0;
-  font-size: 14px;
+  font-size: 11px;
 }
 
 .goals-section ul,
@@ -492,25 +494,25 @@
 
 .goals-section li,
 .achievements-section li {
-  padding: 4px 0;
+  padding: 2px 0;
   color: #6b7280;
-  font-size: 14px;
+  font-size: 11px;
   position: relative;
-  padding-left: 16px;
+  padding-left: 12px;
 }
 
 .goals-section li:before {
   content: "🎯";
   position: absolute;
   left: 0;
-  font-size: 12px;
+  font-size: 8px;
 }
 
 .achievements-section li:before {
   content: "🏆";
   position: absolute;
   left: 0;
-  font-size: 12px;
+  font-size: 8px;
 }
 
 /* Bottom Row */
@@ -537,27 +539,27 @@
 }
 
 .engagement-item {
-  padding: 26px;
+  padding: 16px;
   background: #f9fafb;
   border-radius: 8px;
   border-left: 4px solid #3b82f6;
 }
 
 .engagement-title {
-  font-size: 25px;
+  font-size: 16px;
   font-weight: 400;
   color: #1f2937;
-  margin: 0 0 4px 0;
+  margin: 0 0 2px 0;
 }
 
 .engagement-subtitle {
-  font-size: 20px;
+  font-size: 14px;
   color: #6b7280;
-  margin: 0 0 4px 0;
+  margin: 0 0 2px 0;
 }
 
 .engagement-date {
-  font-size: 20px;
+  font-size: 14px;
   color: #9ca3af;
   margin: 0;
 }
@@ -571,99 +573,119 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-/* Grid layout: large left, smaller right */
+/* Grid layout: All circles in a horizontal row */
 .scores-grid {
   display: grid;
-  grid-template-columns: repeat(4, auto);
-  grid-template-areas:
-    "self avg pm ceo";
-  gap: 100px;
-  justify-content: right;
-  align-items: right;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-/* Large score cards (Self / Avg) */
-.score-card:nth-child(1),
-.score-card:nth-child(2) {
-  width: 40px;
-  height: 250px;
-}
-
-/* Small score cards (PM / CEO) */
-.score-card:nth-child(3),
-.score-card:nth-child(4) {
-  width: 190px;
-  height: 280px;
-}
-
-
-
-/* Card styles */
+/* Regular score cards (Self, PM, CEO) */
 .score-card {
+  width: 120px;
+  height: 120px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background: #f9fafb;
-  border-radius: 8px;
-  padding: 8px;
+  border-radius: 12px;
+  padding: 12px;
   text-align: center;
 }
 
-/* Score ring container */
+/* Larger score card for Avg Review (2nd position) */
+.score-card:nth-child(2) {
+  width: 140px;
+  height: 140px;
+  padding: 16px;
+}
+
+
+
+
+/* Score ring container - regular size */
 .score-ring {
   position: relative;
   display: inline-block;
   margin-bottom: 8px;
+  width: 70px;
+  height: 70px;
 }
 
-/* Score text inside ring */
+/* Larger ring for Avg Review (2nd position) */
+.score-card:nth-child(2) .score-ring {
+  width: 85px;
+  height: 85px;
+}
+
+/* Score text inside ring - regular size */
 .score-text {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-weight: 600;
-  color: #1f2937;
+  color: #1e40af;
   line-height: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.7em;
+  font-size: 18px;
+  z-index: 1;
 }
 
-/* Label below each ring */
+/* Larger text for Avg Review (2nd position) */
+.score-card:nth-child(2) .score-text {
+  font-size: 22px;
+}
+
+/* Label below each ring - regular size */
 .score-label {
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 500;
-  color: #6b7280;
+  color: #1e40af;
   margin-top: 4px;
+  text-align: center;
+}
+
+/* Larger label for Avg Review (2nd position) */
+.score-card:nth-child(2) .score-label {
+  font-size: 14px;
 }
 
 /* Responsive for smaller screens */
 @media (max-width: 768px) {
   .scores-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr;
     grid-template-areas:
       "self avg"
       "pm ceo";
-    gap: 12px;
+    gap: 15px;
+    max-width: 300px;
   }
 
-  .score-card:nth-child(1),
-  .score-card:nth-child(2),
-  .score-card:nth-child(3),
-  .score-card:nth-child(4) {
+  .score-card {
     width: 100px;
     height: 100px;
+    padding: 8px;
+  }
+
+  .score-ring {
+    width: 50px;
+    height: 50px;
   }
 
   .score-text {
-    font-size: 1em;
+    font-size: 16px;
   }
 
   .score-label {
-    font-size: 12px;
+    font-size: 10px;
   }
 }
 
@@ -706,7 +728,7 @@
   }
 
   .title {
-    font-size: 24px;
+    font-size: 18px;
   }
 
   .header-icons {
@@ -743,4 +765,390 @@
 
 .review-cards::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
+}
+
+/* Appraisal Page Styles */
+.appraisal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.appraisal-header h1 {
+  font-size: 24px;
+  color: #1e40af;
+  margin: 0;
+}
+
+.header-icons {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.notification-icon {
+  width: 40px;
+  height: 40px;
+  background: #fbbf24;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.notification-icon:hover {
+  background: #f59e0b;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+
+.appraisal-forms {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.appraisal-form-card {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+  text-align: center;
+}
+
+.form-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e40af;
+  margin-bottom: 15px;
+}
+
+.form-status {
+  margin-bottom: 20px;
+}
+
+.status-pending {
+  color: #dc2626;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.status-submitted {
+  color: #059669;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.status-reviewed {
+  color: #7c3aed;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.form-action-btn {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.submit-btn {
+  background: #fbbf24;
+  color: #1e40af;
+  box-shadow: 0 2px 4px rgba(251, 191, 36, 0.3);
+}
+
+.submit-btn:hover {
+  background: #f59e0b;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(251, 191, 36, 0.4);
+}
+
+.view-btn {
+  background: #3b82f6;
+  color: white;
+  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
+}
+
+.view-btn:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(59, 130, 246, 0.4);
+}
+
+/* Appraisal Form Styles */
+.appraisal-form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.appraisal-form-container h1 {
+  font-size: 20px;
+  color: #1e40af;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.form-instruction {
+  color: #6b7280;
+  font-size: 14px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.appraisal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.form-select {
+  padding: 12px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #374151;
+  background: white;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.form-select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.form-select option {
+  padding: 8px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.cancel-btn {
+  padding: 12px 30px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: white;
+  color: #374151;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cancel-btn:hover {
+  background: #f9fafb;
+  border-color: #9ca3af;
+}
+
+.cancel-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Appraisal View Styles */
+.appraisal-view-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.appraisal-view-container h1 {
+  font-size: 20px;
+  color: #1e40af;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.view-instruction {
+  color: #6b7280;
+  font-size: 14px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.appraisal-view {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.view-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.view-value {
+  padding: 12px 16px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #374151;
+  min-height: 20px;
+}
+
+.view-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.back-btn {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 8px;
+  background: #3b82f6;
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.back-btn:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(59, 130, 246, 0.4);
+}
+
+.loading, .error {
+  text-align: center;
+  padding: 40px;
+  font-size: 16px;
+  color: #6b7280;
+}
+
+/* Back Button Styles */
+.form-header {
+  margin-bottom: 20px;
+}
+
+.back-button {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.back-button:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+}
+
+.back-button:active {
+  transform: translateY(0);
+}
+
+/* Members Page Styles */
+.members-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  background: white;
+  color: #1e40af;
+  padding: 10px 20px;
+  border-radius: 12px;
+}
+
+.members-header h1 {
+  font-size: 20px;
+  color: #1e40af;
+  margin: 0;
+  font-weight: 500;
+}
+
+.members-table-container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.members-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 18px;
+}
+
+.members-table thead {
+  background: #f3f4f6;
+}
+
+.members-table th {
+  padding: 15px 20px;
+  text-align: left;
+  font-weight: 600;
+  color: #1e40af;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.members-table td {
+  padding: 18px 20px;
+  border-bottom: 1px solid #f3f4f6;
+  color: #1e40af;
+}
+
+.members-table tbody tr.even-row {
+  background: white;
+}
+
+.members-table tbody tr.odd-row {
+  background: #f9fafb;
+}
+
+.members-table tbody tr:hover {
+  background: #f0f9ff;
+}
+
+.members-table tbody tr:last-child td {
+  border-bottom: none;
 }

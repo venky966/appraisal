@@ -75,14 +75,30 @@ const ProfilePage = () => {
   };
 
   const handleBack = () => {
-    navigate('/dashboard');
+    // Prefer real browser back navigation
+    const fromAppraisal = localStorage.getItem('fromAppraisal');
+    if (fromAppraisal) {
+      localStorage.removeItem('fromAppraisal');
+    }
+
+    if (window.history && window.history.length > 2) {
+      navigate(-1);
+      return;
+    }
+
+    // Fallbacks if no history
+    if (fromAppraisal === 'true') {
+      navigate('/appraisal');
+    } else {
+      navigate('/dashboard');
+    }
   };
 
   return (
     <div className="profile-page">
       <div className="profile-header">
         <button className="back-btn" onClick={handleBack}>
-          ← Back to Dashboard
+          ← Back
         </button>
         <h1>Employee Profile</h1>
         <div className="profile-actions">
